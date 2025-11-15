@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇸🇦 رقيم AI 966 - مولد البرومبتات الذكي</title>
+    
+    <!-- React & Libraries -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; transition: all 0.3s ease; }
+        body.light { background: #f8fafc; color: #1a1f3a; }
+        body.light .header-bg { background: #ffffff; border-bottom: 1px solid #e2e8f0; }
+        body.light .card-bg { background: #ffffff; border: 1px solid #e2e8f0; }
+        body.light .input-bg { background: #f8fafc; border: 2px solid #e2e8f0; color: #1a1f3a; }
+        body.light .text-primary { color: #1a1f3a; }
+        body.light .text-secondary { color: #475569; }
+        body.light .hero-section { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
+        body.dark { background: #0f1419; color: #ffffff; }
+        body.dark .header-bg { background: #1a1f2e; border-bottom: 1px solid #2a2f3e; }
+        body.dark .card-bg { background: #1a1f2e; border: 1px solid #2a2f3e; }
+        body.dark .input-bg { background: #0f1419; border: 2px solid #2a2f3e; color: #ffffff; }
+        body.dark .text-primary { color: #ffffff; }
+        body.dark .text-secondary { color: #94a3b8; }
+        body.dark .hero-section { background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%); }
+        
+        .gradient-btn { background: linear-gradient(135deg, #00d4aa 0%, #a0ff00 100%); color: #0f1419; font-weight: 700; transition: all 0.3s; }
+        .gradient-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3); }
+        .gradient-text { background: linear-gradient(135deg, #00d4aa 0%, #a0ff00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
+        .theme-toggle { position: fixed; top: 20px; left: 20px; z-index: 1000; background: rgba(0, 212, 170, 0.1); backdrop-filter: blur(10px); border: 2px solid rgba(0, 212, 170, 0.3); border-radius: 50px; padding: 10px 20px; cursor: pointer; transition: all 0.3s; }
+        .theme-toggle:hover { background: rgba(0, 212, 170, 0.2); border-color: #00d4aa; }
+        .tab-active { background: linear-gradient(135deg, #00d4aa 0%, #a0ff00 100%); color: #0f1419; }
+        .tab-inactive { background: transparent; border: 2px solid #e2e8f0; }
+        body.dark .tab-inactive { border-color: #2a2f3e; }
+        .animate-fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .glow-effect { box-shadow: 0 0 30px rgba(0, 212, 170, 0.2); }
+        .ai-badge { background: linear-gradient(135deg, #00d4aa 0%, #a0ff00 100%); color: #0f1419; font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 700; display: inline-block; margin-right: 8px; }
+        .library-card { transition: all 0.3s ease; cursor: pointer; }
+        .library-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 212, 170, 0.2); }
+        .category-badge { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; display: inline-block; }
+        .filter-btn { padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; transition: all 0.3s; cursor: pointer; }
+        .filter-btn-active { background: linear-gradient(135deg, #00d4aa 0%, #a0ff00 100%); color: #0f1419; }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; animation: fadeIn 0.3s ease; }
+        .modal-content { max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; border-radius: 20px; animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        .quality-indicator { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+        .quality-pro { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #1a1f3a; }
+        .quality-advanced { background: linear-gradient(135deg, #00d4aa 0%, #a0ff00 100%); color: #0f1419; }
+        .scrollbar-custom::-webkit-scrollbar { width: 8px; }
+        .scrollbar-custom::-webkit-scrollbar-track { background: rgba(0, 212, 170, 0.1); border-radius: 10px; }
+        .scrollbar-custom::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #00d4aa 0%, #a0ff00 100%); border-radius: 10px; }
+        .typing-indicator { display: inline-flex; gap: 4px; }
+        .typing-indicator span { width: 8px; height: 8px; border-radius: 50%; background: #00d4aa; animation: typing 1.4s infinite; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing { 0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); } 30% { opacity: 1; transform: scale(1); } }
+        .speed-badge { background: linear-gradient(135deg, #ff6b6b 0%, #ffd93d 100%); color: #1a1f3a; font-size: 10px; padding: 3px 8px; border-radius: 6px; font-weight: 700; display: inline-block; margin-right: 8px; }
+        
+        .hero-section { min-height: 500px; display: flex; align-items: center; justify-content: center; padding: 80px 20px; position: relative; overflow: hidden; }
+        .logo-display { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        .logo-wrapper { display: inline-block; position: relative; }
+        .logo-svg { display: block; filter: drop-shadow(0 10px 40px rgba(0, 243, 255, 0.5)); }
+        .simple-header { padding: 15px 0; }
+        .brand-text { font-size: 1.5rem; }
+        .float-pattern { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0.1; pointer-events: none; }
+        .float-circle { position: absolute; border-radius: 50%; background: linear-gradient(135deg, #00d4aa 0%, #a0ff00 100%); animation: float 10s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(50px, -50px); } }
+        
+        .voice-btn { position: relative; }
+        .voice-btn.recording { animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.7); } 50% { box-shadow: 0 0 0 10px rgba(0, 212, 170, 0); } }
+        .voice-wave { display: inline-block; width: 3px; height: 20px; margin: 0 2px; background: #00d4aa; animation: wave 1s infinite ease-in-out; }
+        .voice-wave:nth-child(2) { animation-delay: 0.1s; }
+        .voice-wave:nth-child(3) { animation-delay: 0.2s; }
+        .voice-wave:nth-child(4) { animation-delay: 0.3s; }
+        @keyframes wave { 0%, 100% { height: 10px; } 50% { height: 25px; } }
+        
+        .optimizer-score { font-size: 48px; font-weight: 900; background: linear-gradient(135deg, #00d4aa 0%, #a0ff00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .score-bar { height: 8px; border-radius: 10px; background: rgba(0, 212, 170, 0.2); overflow: hidden; }
+        .score-fill { height: 100%; background: linear-gradient(90deg, #ff6b6b 0%, #ffd93d 50%, #00d4aa 100%); transition: width 1s ease; }
+        .suggestion-item { padding: 12px; border-radius: 12px; margin-bottom: 8px; border-left: 4px solid #00d4aa; }
+        
+        .industry-card { transition: all 0.3s; cursor: pointer; border: 2px solid transparent; }
+        .industry-card:hover { border-color: #00d4aa; transform: translateY(-3px); }
+        .industry-card.selected { border-color: #00d4aa; background: rgba(0, 212, 170, 0.1); }
+        
+        .share-option { padding: 15px; border-radius: 12px; cursor: pointer; transition: all 0.3s; }
+        .share-option:hover { transform: scale(1.05); }
+        
+        .stat-card { padding: 20px; border-radius: 16px; text-align: center; }
+        .stat-number { font-size: 36px; font-weight: 900; }
+        
+        .new-badge { 
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8c42 100%); 
+            color: white; 
+            font-size: 9px; 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            font-weight: 700; 
+            display: inline-block; 
+            margin-right: 6px;
+            animation: wiggle 2s infinite;
+        }
+        @keyframes wiggle { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+        
+        .faq-item { 
+            border-radius: 12px; 
+            margin-bottom: 12px; 
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .faq-question { 
+            padding: 20px; 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .faq-question:hover { background: rgba(0, 212, 170, 0.1); }
+        .faq-answer { 
+            padding: 0 20px; 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: all 0.3s ease;
+        }
+        .faq-answer.open { 
+            padding: 20px; 
+            max-height: 1000px; 
+        }
+        .faq-icon { 
+            transition: transform 0.3s; 
+            font-size: 20px;
+            color: #00d4aa;
+        }
+        .faq-icon.rotated { transform: rotate(180deg); }
+        
+        .popular-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0 8px;
+        }
+        .popular-row { 
+            transition: all 0.3s; 
+            cursor: pointer;
+        }
+        .popular-row:hover { transform: translateX(-5px); }
+        .popular-row td { 
+            padding: 15px; 
+            border-radius: 12px;
+        }
+        .popular-row:hover td { background: rgba(0, 212, 170, 0.1); }
+        .star-rating { 
+            color: #ffd93d; 
+            font-size: 16px;
+        }
+        .star-empty { 
+            color: rgba(255, 217, 61, 0.3);
+        }
+        .rank-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+        }
+        .rank-1 { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #1a1f3a; }
+        .rank-2 { background: linear-gradient(135deg, #C0C0C0 0%, #808080 100%); color: #1a1f3a; }
+        .rank-3 { background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%); color: white; }
+        .rank-other { background: rgba(0, 212, 170, 0.2); color: #00d4aa; }
+        
+        .example-block {
+            padding: 15px;
+            border-radius: 12px;
+            margin: 10px 0;
+            border-left: 4px solid #00d4aa;
+            position: relative;
+        }
+        .copy-example-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .copy-example-btn:hover { transform: scale(1.1); }
+        
+        .offline-badge {
+            background: linear-gradient(135deg, #00d4aa 0%, #a0ff00 100%);
+            color: #0f1419;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="dark">
+    <div class="theme-toggle" id="themeToggle"><span id="themeIcon">🌙</span></div>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // 🚀 محرك التوليد الذكي - يعمل بدون إنترنت!
+        const PromptGenerator = {
+            // قوالب التحسين الاحترافية
+            enhancementTemplates: {
+                structure: [
+                    "قم بصياغة برومبت احترافي يتضمن",
+                    "صمم طلب مفصل ومنظم يحتوي على",
+                    "أنشئ برومبت شامل يشمل",
+                    "اكتب تعليمات واضحة تتضمن"
+                ],
+                elements: [
+                    "مقدمة توضح الهدف بشكل دقيق",
+                    "تفاصيل محددة عن المخرجات المطلوبة",
+                    "السياق والخلفية اللازمة",
+                    "معايير الجودة والمتطلبات",
+                    "أمثلة توضيحية إن أمكن",
+                    "نبرة وأسلوب الكتابة المطلوب",
+                    "القيود أو المحاذير المهمة",
+                    "تنسيق النتيجة النهائية"
+                ],
+                enhancements: [
+                    "استخدم لغة واضحة ومباشرة",
+                    "حدد المتغيرات بين أقواس مربعة [متغير]",
+                    "أضف تفاصيل كافية دون إطالة",
+                    "نظم المتطلبات في نقاط أو أقسام",
+                    "حدد الطول أو الحجم المتوقع للنتيجة",
+                    "اذكر الجمهور المستهدف",
+                    "حدد الهدف النهائي من المحتوى"
+                ],
+                contextAdditions: [
+                    "مع مراعاة الثقافة السعودية",
+                    "بأسلوب عصري وجذاب",
+                    "مناسب للمنصات الرقمية",
+                    "يحقق أعلى نسبة تفاعل",
+                    "بصياغة احترافية",
+                    "مع أمثلة عملية",
+                    "بطريقة سهلة الفهم"
+                ],
+                qualityMarkers: [
+                    "تأكد من",
+                    "احرص على",
+                    "لا تنسَ",
+                    "من المهم",
+                    "يُفضل"
+                ]
+            },
+
+            // دالة التوليد الرئيسية
+            generate(basicPrompt) {
+                if (!basicPrompt || basicPrompt.trim().length < 5) {
+                    return "⚠️ الرجاء إدخال نص أطول للحصول على نتائج أفضل";
+                }
+
+                const prompt = basicPrompt.trim();
+                
+                // تحليل البرومبت لتحديد النوع
+                const promptType = this.analyzePromptType(prompt);
+                
+                // توليد برومبت محسّن
+                const enhanced = this.buildEnhancedPrompt(prompt, promptType);
+                
+                return enhanced;
+            },
+
+            // تحليل نوع البرومبت
+            analyzePromptType(prompt) {
+                const lower = prompt.toLowerCase();
+                
+                if (lower.includes('مقال') || lower.includes('كتاب') || lower.includes('تدوين')) {
+                    return 'article';
+                } else if (lower.includes('تويتر') || lower.includes('تغريد') || lower.includes('سوشيال')) {
+                    return 'social';
+                } else if (lower.includes('كود') || lower.includes('برمج') || lower.includes('سكربت')) {
+                    return 'code';
+                } else if (lower.includes('تصميم') || lower.includes('صورة') || lower.includes('رسم')) {
+                    return 'design';
+                } else if (lower.includes('شرح') || lower.includes('تعليم') || lower.includes('درس')) {
+                    return 'educational';
+                } else if (lower.includes('تسويق') || lower.includes('إعلان') || lower.includes('منتج')) {
+                    return 'marketing';
+                }
+                
+                return 'general';
+            },
+
+            // بناء البرومبت المحسّن
+            buildEnhancedPrompt(originalPrompt, type) {
+                const templates = this.enhancementTemplates;
+                
+                // اختيار عناصر عشوائية
+                const structure = this.getRandom(templates.structure);
+                const elements = this.getRandomMultiple(templates.elements, 4);
+                const enhancements = this.getRandomMultiple(templates.enhancements, 3);
+                const context = this.getRandom(templates.contextAdditions);
+                const qualityMarker = this.getRandom(templates.qualityMarkers);
+                
+                // بناء البرومبت حسب النوع
+                let enhanced = `${structure}:\n\n`;
+                enhanced += `📋 **الطلب الأساسي:**\n${originalPrompt}\n\n`;
+                enhanced += `✨ **المتطلبات التفصيلية:**\n`;
+                
+                elements.forEach((element, index) => {
+                    enhanced += `${index + 1}. ${element}\n`;
+                });
+                
+                enhanced += `\n🎯 **معايير الجودة:**\n`;
+                enhancements.forEach((enhancement, index) => {
+                    enhanced += `• ${enhancement}\n`;
+                });
+                
+                enhanced += `\n💡 **ملاحظات إضافية:**\n`;
+                enhanced += `${qualityMarker} ${context}.\n`;
+                
+                // إضافة نصائح خاصة بالنوع
+                enhanced += this.getTypeSpecificTips(type);
+                
+                return enhanced;
+            },
+
+            // نصائح خاصة بكل نوع
+            getTypeSpecificTips(type) {
+                const tips = {
+                    article: "\n📝 **للمقالات:**\n• استخدم عناوين فرعية واضحة\n• أضف مقدمة جذابة وخاتمة قوية\n• استخدم أمثلة وإحصائيات\n",
+                    social: "\n📱 **للسوشيال ميديا:**\n• اجعله قصيراً وجذاباً\n• استخدم الإيموجي بذكاء\n• أضف Call to Action واضح\n",
+                    code: "\n💻 **للبرمجة:**\n• اذكر لغة البرمجة المطلوبة\n• حدد المدخلات والمخرجات\n• اطلب تعليقات توضيحية في الكود\n",
+                    design: "\n🎨 **للتصميم:**\n• حدد الألوان والأبعاد\n• اذكر الأسلوب المطلوب (مينيمال، عصري، كلاسيكي)\n• حدد الاستخدام النهائي\n",
+                    educational: "\n📚 **للمحتوى التعليمي:**\n• حدد المستوى الدراسي أو العمري\n• استخدم أسلوب بسيط ومباشر\n• أضف أمثلة عملية\n",
+                    marketing: "\n🎯 **للتسويق:**\n• حدد الجمهور المستهدف\n• اذكر نقاط البيع الرئيسية\n• استخدم لغة مقنعة وجذابة\n",
+                    general: "\n✅ **نصائح عامة:**\n• كن محدداً قدر الإمكان\n• استخدم أمثلة لتوضيح المطلوب\n• حدد الطول أو الحجم المتوقع\n"
+                };
+                
+                return tips[type] || tips.general;
+            },
+
+            // دوال مساعدة
+            getRandom(array) {
+                return array[Math.floor(Math.random() * array.length)];
+            },
+
+            getRandomMultiple(array, count) {
+                const shuffled = [...array].sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, count);
+            }
+        };
+
+        // بيانات الأسئلة الشائعة
+        const faqData = [
+            {
+                question: "ما هو البرومبت (Prompt)؟",
+                answer: "البرومبت هو الطلب أو التعليمات التي تعطيها لنموذج الذكاء الاصطناعي للحصول على نتيجة أو محتوى مطلوب. يمكن اعتباره كـ 'السؤال' أو 'المهمة' التي تطلبها من الذكاء الاصطناعي.",
+                icon: "🤖"
+            },
+            {
+                question: "كيف أكتب برومبت فعال؟",
+                answer: "لكتابة برومبت فعال اتبع هذه الخطوات:\n• حدد الهدف بوضوح\n• استخدم لغة بسيطة ودقيقة\n• وجه النموذج لنبرة أو أسلوب معين\n• حدد صيغة المخرجات المطلوبة (نقاط، مقال، تغريدة، كود)\n• أضف سياق كافي للموضوع",
+                icon: "✍️"
+            },
+            {
+                question: "هل يحتاج البرومبت إلى ذكر تفاصيل كثيرة؟",
+                answer: "كلما زادت التفاصيل الدقيقة زادت جودة النتائج، لكن تجنب الإطالة غير الضرورية. التوازن هو المفتاح - أضف تفاصيل مهمة واحذف التكرار والحشو.",
+                icon: "📝"
+            },
+            {
+                question: "كيف أوجه البرومبت لنبرة محددة؟",
+                answer: "أضف عبارات مثل:\n• 'استخدم نبرة رسمية واحترافية'\n• 'اجعل الأسلوب مرحاً وجذاباً'\n• 'اكتب بأسلوب تحفيزي وملهم'\n• 'استخدم لغة بسيطة مناسبة للمبتدئين'\n\nهذا يضبط طريقة كتابة الذكاء الاصطناعي للمحتوى.",
+                icon: "🎭"
+            },
+            {
+                question: "ما الفرق بين البرومبت الجيد والسيء؟",
+                answer: "البرومبت الجيد: واضح، محدد، يحتوي على سياق كافي، ويحدد الصيغة المطلوبة.\n\nمثال سيء: 'اكتب عن التسويق'\n\nمثال جيد: 'اكتب مقال 500 كلمة عن استراتيجيات التسويق الرقمي للشركات الصغيرة في 2025، مع التركيز على السوشيال ميديا، بأسلوب عملي يحتوي على أمثلة'",
+                icon: "⚖️"
+            }
+        ];
+        // البرومبتات الشائعة
+        const popularPrompts = [
+            {
+                rank: 1,
+                prompt: "اكتب 5 نصائح للمذاكرة الفعالة بأسلوب بسيط ومحفز",
+                rating: 5,
+                category: "تعليمي",
+                uses: 2847
+            },
+            {
+                rank: 2,
+                prompt: "أنشئ خطة محتوى أسبوعية لتويتر عن التقنية (7 تغريدات متنوعة)",
+                rating: 4,
+                category: "سوشيال ميديا",
+                uses: 2156
+            },
+            {
+                rank: 3,
+                prompt: "اكتب تعريفاً شاملاً بالذكاء الاصطناعي مناسب للمبتدئين",
+                rating: 5,
+                category: "تقني",
+                uses: 1892
+            },
+            {
+                rank: 4,
+                prompt: "برمج كود بايثون لحساب مجموع الأرقام من 1 إلى 100",
+                rating: 4,
+                category: "برمجة",
+                uses: 1673
+            },
+            {
+                rank: 5,
+                prompt: "جهّز مقالاً تحفيزياً (500 كلمة) عن أهمية تطوير الذات",
+                rating: 5,
+                category: "كتابة",
+                uses: 1534
+            },
+            {
+                rank: 6,
+                prompt: "أنشئ قصة قصيرة (200 كلمة) للأطفال عن الصداقة",
+                rating: 4,
+                category: "إبداعي",
+                uses: 1289
+            },
+            {
+                rank: 7,
+                prompt: "اكتب وصف منتج احترافي لمتجر إلكتروني (هاتف ذكي)",
+                rating: 5,
+                category: "تجارة",
+                uses: 1156
+            },
+            {
+                rank: 8,
+                prompt: "صمم خطة تمرين رياضي أسبوعية للمبتدئين",
+                rating: 4,
+                category: "صحة",
+                uses: 987
+            }
+        ];
+
+        // أمثلة عملية
+        const examplePrompts = [
+            {
+                title: "مثال 1: ملخص بسيط",
+                prompt: "اكتب ملخصاً عن الذكاء الاصطناعي بلغة بسيطة مناسبة لطالب ثانوي، في 100 كلمة.",
+                category: "تعليمي"
+            },
+            {
+                title: "مثال 2: محتوى ملهم",
+                prompt: "أنشئ منشوراً ملهماً (150 كلمة) عن أهمية القراءة للشباب، بأسلوب تحفيزي ومشجع.",
+                category: "كتابة"
+            },
+            {
+                title: "مثال 3: كود برمجي",
+                prompt: "برمج كود بايثون لطباعة جدول الضرب من 1 إلى 10 بشكل منسق.",
+                category: "برمجة"
+            }
+        ];
+
+        // قوالب الصناعات
+        const industryTemplates = {
+            medical: {
+                icon: '🏥',
+                name: 'طبي',
+                color: '#ff6b6b',
+                prompts: [
+                    'نصائح طبية عامة عن [الموضوع] بأسلوب مبسط',
+                    'شرح مفصل لمرض [المرض] مع الأعراض والعلاج',
+                    'دليل شامل عن [الحالة الصحية] للمرضى وعائلاتهم'
+                ]
+            },
+            finance: {
+                icon: '🏦',
+                name: 'مالي',
+                color: '#ffd93d',
+                prompts: [
+                    'تحليل مالي شامل لـ [الشركة/المشروع] مع التوصيات',
+                    'نصائح استثمارية عملية في [المجال] للمبتدئين',
+                    'دراسة جدوى تفصيلية لـ [المشروع] مع الأرقام'
+                ]
+            },
+            education: {
+                icon: '📚',
+                name: 'تعليمي',
+                color: '#00d4aa',
+                prompts: [
+                    'خطة درس تفاعلية عن [الموضوع] مدتها 45 دقيقة',
+                    'شرح مبسط ومصور لطلاب [المرحلة] عن [الموضوع]',
+                    'مجموعة أسئلة اختبار متنوعة في [المادة] مع الإجابات'
+                ]
+            },
+            gaming: {
+                icon: '🎮',
+                name: 'ألعاب',
+                color: '#a78bfa',
+                prompts: [
+                    'قصة لعبة فيديو مشوقة عن [الموضوع] مع الشخصيات',
+                    'استراتيجية مفصلة للفوز في [اللعبة] مع النصائح',
+                    'مراجعة احترافية لعبة [اسم اللعبة] من جميع الجوانب'
+                ]
+            },
+            business: {
+                icon: '💼',
+                name: 'أعمال',
+                color: '#3b82f6',
+                prompts: [
+                    'خطة عمل شاملة لـ [المشروع] مع التحليل المالي',
+                    'استراتيجية تسويقية متكاملة لـ [المنتج] مع الخطة الزمنية',
+                    'تحليل SWOT تفصيلي لـ [الشركة] مع التوصيات'
+                ]
+            },
+            creative: {
+                icon: '🎨',
+                name: 'إبداعي',
+                color: '#ec4899',
+                prompts: [
+                    'فكرة إبداعية مبتكرة لـ [المشروع] مع خطة التنفيذ',
+                    'مفهوم تصميم [نوع التصميم] عن [الموضوع] بالتفاصيل',
+                    'حملة إعلانية إبداعية لـ [المنتج] عبر 3 قنوات'
+                ]
+            },
+            tech: {
+                icon: '📱',
+                name: 'تقني',
+                color: '#06b6d4',
+                prompts: [
+                    'شرح تقني مفصل لـ [التكنولوجيا] بأسلوب مبسط',
+                    'مقارنة شاملة بين [تقنية 1] و [تقنية 2] مع الجداول',
+                    'دليل مستخدم كامل لـ [البرنامج] مع لقطات الشاشة'
+                ]
+            },
+            ecommerce: {
+                icon: '🛒',
+                name: 'تجارة',
+                color: '#f59e0b',
+                prompts: [
+                    'وصف منتج جذاب ومقنع لـ [المنتج] يزيد المبيعات',
+                    'استراتيجية بيع متكاملة لـ [المنتج] عبر الإنترنت',
+                    'محتوى متجر إلكتروني احترافي لفئة [الفئة]'
+                ]
+            }
+        };
+
+        const promptLibraryData = {
+            text: [
+                { id: 1, title: "مقال مدونة شامل", category: "كتابة محتوى", quality: "pro", description: "مقال احترافي 2000+ كلمة", basePrompt: "اكتب مقال مدونة شامل عن [الموضوع] يتضمن: مقدمة جذابة، 5 عناوين رئيسية، أمثلة عملية، إحصائيات، وخاتمة تحفيزية. استخدم أسلوب سلس ومناسب لمحركات البحث" },
+                { id: 2, title: "محتوى تويتر فيرال", category: "كتابة محتوى", quality: "pro", description: "تغريدات تحقق انتشار واسع", basePrompt: "اكتب 5 تغريدات عن [الموضوع] بأسلوب: مثير للجدل قليلاً، يحتوي على إحصائية مفاجئة، يطرح سؤال يدفع للتفاعل، يستخدم emoji بذكاء، وينتهي بـ Call to Action قوي" },
+                { id: 3, title: "سكربت فيديو يوتيوب", category: "كتابة محتوى", quality: "pro", description: "سيناريو جذاب للفيديوهات", basePrompt: "اكتب سكربت فيديو يوتيوب مدته 10 دقائق عن [الموضوع]. يشمل: Hook قوي في أول 10 ثواني، 3 نقاط رئيسية، أمثلة واقعية، لحظات كوميدية، وخاتمة تشجع على الاشتراك والإعجاب" },
+                { id: 4, title: "وصف منتج احترافي", category: "كتابة محتوى", quality: "pro", description: "وصف يزيد المبيعات بنسبة عالية", basePrompt: "اكتب وصف منتج [المنتج] يتضمن: عنوان جذاب، 5 فوائد رئيسية، مواصفات تقنية، حل لمشكلة العميل، ضمانات، وعبارة CTA مقنعة. استخدم أسلوب AIDA التسويقي" },
+                { id: 5, title: "نص بودكاست احترافي", category: "كتابة محتوى", quality: "advanced", description: "حلقة بودكاست كاملة ومنظمة", basePrompt: "اكتب نص حلقة بودكاست 30 دقيقة عن [الموضوع]. يشمل: مقدمة ترحيبية، 4 محاور رئيسية، قصص شخصية، نصائح عملية، أسئلة متوقعة من الجمهور، وخاتمة ملهمة" }
+            ],
+            image: []
+        };
+        function App() {
+            const [basicPrompt, setBasicPrompt] = useState('');
+            const [enhancedPrompt, setEnhancedPrompt] = useState('');
+            const [isGenerating, setIsGenerating] = useState(false);
+            const [activeTab, setActiveTab] = useState('generator');
+            const [selectedPrompt, setSelectedPrompt] = useState(null);
+            
+            const [isRecording, setIsRecording] = useState(false);
+            const [voiceSupported, setVoiceSupported] = useState(false);
+            const recognitionRef = useRef(null);
+            
+            const [showOptimizer, setShowOptimizer] = useState(false);
+            const [optimizerScore, setOptimizerScore] = useState(0);
+            const [optimizerSuggestions, setOptimizerSuggestions] = useState([]);
+            
+            const [selectedIndustry, setSelectedIndustry] = useState(null);
+            const [showShareModal, setShowShareModal] = useState(false);
+            const [openFaqIndex, setOpenFaqIndex] = useState(null);
+            
+            const [stats, setStats] = useState({
+                totalGenerated: 0,
+                todayGenerated: 0,
+                favoriteCategory: 'كتابة محتوى'
+            });
+
+            useEffect(() => {
+                if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                    setVoiceSupported(true);
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    recognitionRef.current = new SpeechRecognition();
+                    recognitionRef.current.lang = 'ar-SA';
+                    recognitionRef.current.continuous = false;
+                    recognitionRef.current.interimResults = false;
+
+                    recognitionRef.current.onresult = (event) => {
+                        const transcript = event.results[0][0].transcript;
+                        setBasicPrompt(transcript);
+                        setIsRecording(false);
+                    };
+
+                    recognitionRef.current.onerror = () => setIsRecording(false);
+                    recognitionRef.current.onend = () => setIsRecording(false);
+                }
+
+                const savedStats = localStorage.getItem('raqeemStats');
+                if (savedStats) {
+                    setStats(JSON.parse(savedStats));
+                }
+            }, []);
+
+            const startVoiceInput = () => {
+                if (!voiceSupported) {
+                    alert('⚠️ المتصفح لا يدعم الإدخال الصوتي. جرب Chrome أو Edge');
+                    return;
+                }
+
+                if (isRecording) {
+                    recognitionRef.current.stop();
+                    setIsRecording(false);
+                } else {
+                    recognitionRef.current.start();
+                    setIsRecording(true);
+                }
+            };
+
+            const analyzePrompt = (prompt) => {
+                let score = 0;
+                const suggestions = [];
+                
+                if (prompt.length < 20) {
+                    suggestions.push({
+                        type: 'warning',
+                        text: 'البرومبت قصير جداً. أضف المزيد من التفاصيل لنتائج أفضل'
+                    });
+                } else if (prompt.length > 50) {
+                    score += 30;
+                }
+
+                if (prompt.includes('[') && prompt.includes(']')) {
+                    score += 20;
+                } else {
+                    suggestions.push({
+                        type: 'tip',
+                        text: 'استخدم [متغيرات] لجعل البرومبت أكثر مرونة'
+                    });
+                }
+
+                const powerWords = ['احترافي', 'شامل', 'مفصل', 'جذاب', 'فعال', 'مبتكر'];
+                const hasPowerWords = powerWords.some(word => prompt.includes(word));
+                if (hasPowerWords) {
+                    score += 25;
+                } else {
+                    suggestions.push({
+                        type: 'success',
+                        text: 'أضف كلمات قوية مثل: احترافي، شامل، مفصل'
+                    });
+                }
+
+                if (prompt.includes(':') || prompt.includes('،')) {
+                    score += 25;
+                    suggestions.push({
+                        type: 'success',
+                        text: 'بنية ممتازة! البرومبت منظم بشكل جيد'
+                    });
+                }
+
+                score = Math.min(score, 100);
+
+                setOptimizerScore(score);
+                setOptimizerSuggestions(suggestions);
+                setShowOptimizer(true);
+            };
+
+            const shareToTwitter = () => {
+                const text = encodeURIComponent(`🤖 استخدمت رقيم AI 966 - مولد البرومبتات الذكي بدون إنترنت!\n\n✨ يعمل محلياً بقوالب احترافية`);
+                window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+            };
+
+            const shareToTelegram = () => {
+                const text = encodeURIComponent(`🤖 رقيم AI 966 - مولد البرومبتات الذكي\n⚡ يعمل بدون إنترنت!`);
+                window.open(`https://t.me/share/url?url=https://raqeem.ai&text=${text}`, '_blank');
+            };
+
+            const copyShareLink = () => {
+                navigator.clipboard.writeText('رقيم AI 966 - مولد برومبتات ذكي يعمل محلياً بدون إنترنت');
+                alert('✅ تم النسخ!');
+            };
+
+            const copyToClipboard = (text) => {
+                navigator.clipboard.writeText(text);
+                alert('✅ تم النسخ بنجاح!');
+            };
+
+            const toggleFaq = (index) => {
+                setOpenFaqIndex(openFaqIndex === index ? null : index);
+            };
+
+            const usePopularPrompt = (prompt) => {
+                setBasicPrompt(prompt);
+                setActiveTab('generator');
+            };
+
+            // 🚀 دالة التوليد المحلية
+            const generateEnhancedPrompt = () => {
+                if (!basicPrompt.trim()) {
+                    alert('⚠️ الرجاء إدخال نص البرومبت الأساسي');
+                    return;
+                }
+
+                setIsGenerating(true);
+                setEnhancedPrompt('');
+
+                // محاكاة وقت المعالجة
+                setTimeout(() => {
+                    const result = PromptGenerator.generate(basicPrompt);
+                    setEnhancedPrompt(result);
+
+                    const newStats = {
+                        ...stats,
+                        totalGenerated: stats.totalGenerated + 1,
+                        todayGenerated: stats.todayGenerated + 1
+                    };
+                    setStats(newStats);
+                    localStorage.setItem('raqeemStats', JSON.stringify(newStats));
+
+                    setIsGenerating(false);
+                }, 1500);
+            };
+
+            const t = {
+                generator: 'مولد البرومبتات',
+                library: 'مكتبة القوالب',
+                optimizer: 'محلل البرومبتات',
+                industries: 'قوالب متخصصة',
+                stats: 'إحصائياتي',
+                faq: 'أسئلة شائعة',
+                popular: 'برومبتات شائعة',
+                inputPlaceholder: 'اكتب برومبتك هنا... مثال: اكتب لي مقال عن الذكاء الاصطناعي',
+                generate: 'توليد البرومبت المحسّن',
+                generating: 'جاري التوليد...',
+                enhancedResult: 'البرومبت المحسّن',
+                copy: 'نسخ',
+                allCategories: 'الكل',
+                proQuality: 'احترافي',
+                advancedQuality: 'متقدم',
+                useThisPrompt: 'استخدم هذا البرومبت',
+                voiceInput: 'إدخال صوتي',
+                recording: 'جاري التسجيل...',
+                analyze: 'تحليل البرومبت',
+                share: 'مشاركة',
+                shareTitle: 'شارك رقيم AI 966',
+                shareDescription: 'شارك مع أصدقائك واستفيدوا معاً!',
+                selectIndustry: 'اختر مجالك التخصصي'
+            };
+
+            return (
+                <div className="min-h-screen">
+                    {/* Hero Section */}
+                    <div className="hero-section">
+                        <div className="float-pattern">
+                            <div className="float-circle" style={{width: '200px', height: '200px', top: '10%', right: '10%'}}></div>
+                            <div className="float-circle" style={{width: '150px', height: '150px', bottom: '20%', left: '15%', animationDelay: '2s'}}></div>
+                            <div className="float-circle" style={{width: '100px', height: '100px', top: '60%', right: '30%', animationDelay: '4s'}}></div>
+                        </div>
+                        <div className="container mx-auto px-4 text-center relative z-10">
+                            <div className="logo-display">
+                                <div className="logo-wrapper">
+                                    <svg className="logo-svg" width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="60" cy="60" r="55" fill="url(#gradient1)" opacity="0.2"/>
+                                        <path d="M60 20 L80 40 L80 80 L60 100 L40 80 L40 40 Z" fill="url(#gradient1)" opacity="0.8"/>
+                                        <circle cx="60" cy="60" r="15" fill="#fff"/>
+                                        <defs>
+                                            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" style={{stopColor: '#00d4aa', stopOpacity: 1}} />
+                                                <stop offset="100%" style={{stopColor: '#a0ff00', stopOpacity: 1}} />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h1 className="text-5xl font-black mb-3">
+                                        <span className="gradient-text">رقيم AI 966</span>
+                                    </h1>
+                                    <p className="text-xl text-secondary mb-3">مولد البرومبتات الذكي بالذكاء الاصطناعي 🚀</p>
+                                    <span className="offline-badge">⚡ يعمل بدون إنترنت - قوالب محلية احترافية</span>
+                                    <div className="flex justify-center gap-3 mt-4 flex-wrap">
+                                        <span className="ai-badge">🎤 إدخال صوتي</span>
+                                        <span className="ai-badge">📊 محلل ذكي</span>
+                                        <span className="ai-badge">🏭 قوالب متخصصة</span>
+                                        <span className="ai-badge">❓ دليل شامل</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Main Content */}
+                    <div className="container mx-auto px-4 py-8">
+                        {/* Navigation Tabs */}
+                        <div className="flex gap-3 mb-8 overflow-x-auto pb-2">
+                            {[
+                                {id: 'generator', icon: '✨', label: t.generator},
+                                {id: 'library', icon: '📚', label: t.library},
+                                {id: 'optimizer', icon: '📊', label: t.optimizer},
+                                {id: 'industries', icon: '🏭', label: t.industries},
+                                {id: 'faq', icon: '❓', label: t.faq},
+                                {id: 'popular', icon: '🔥', label: t.popular},
+                                {id: 'stats', icon: '📈', label: t.stats}
+                            ].map(tab => (
+                                <button
+                                    key={tab.id}
+                                    onClick={() => setActiveTab(tab.id)}
+                                    className={`px-6 py-3 rounded-full font-bold whitespace-nowrap transition-all ${
+                                        activeTab === tab.id ? 'tab-active' : 'tab-inactive'
+                                    }`}
+                                >
+                                    {tab.icon} {tab.label}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Generator Tab */}
+                        {activeTab === 'generator' && (
+                            <div className="animate-fade-in">
+                                <div className="card-bg p-8 rounded-3xl glow-effect mb-6">
+                                    <div className="flex justify-between items-center mb-4 flex-wrap gap-3">
+                                        <h2 className="text-2xl font-bold text-primary">البرومبت الأساسي</h2>
+                                        <div className="flex gap-2 flex-wrap">
+                                            {voiceSupported && (
+                                                <button
+                                                    onClick={startVoiceInput}
+                                                    className={`voice-btn px-4 py-2 rounded-xl transition-all ${
+                                                        isRecording ? 'recording gradient-btn' : ''
+                                                    }`}
+                                                    style={!isRecording ? {border: '2px solid #00d4aa', color: '#00d4aa'} : {}}
+                                                    title={t.voiceInput}
+                                                >
+                                                    {isRecording ? (
+                                                        <>
+                                                            <span className="voice-wave"></span>
+                                                            <span className="voice-wave"></span>
+                                                            <span className="voice-wave"></span>
+                                                            <span className="voice-wave"></span>
+                                                        </>
+                                                    ) : (
+                                                        <>🎤</>
+                                                    )}
+                                                </button>
+                                            )}
+                                            <button
+                                                onClick={() => analyzePrompt(basicPrompt)}
+                                                disabled={!basicPrompt.trim()}
+                                                className="px-4 py-2 rounded-xl"
+                                                style={{border: '2px solid #00d4aa', color: '#00d4aa'}}
+                                                title={t.analyze}
+                                            >
+                                                📊
+                                            </button>
+                                            <button
+                                                onClick={() => setShowShareModal(true)}
+                                                className="px-4 py-2 rounded-xl"
+                                                style={{border: '2px solid #00d4aa', color: '#00d4aa'}}
+                                                title={t.share}
+                                            >
+                                                🔗
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <textarea
+                                        className="w-full input-bg rounded-2xl p-4 focus:outline-none focus:ring-2 focus:ring-[#00d4aa] mb-4"
+                                        rows="6"
+                                        placeholder={t.inputPlaceholder}
+                                        value={basicPrompt}
+                                        onChange={(e) => setBasicPrompt(e.target.value)}
+                                    />
+                                    <button
+                                        onClick={generateEnhancedPrompt}
+                                        disabled={isGenerating || !basicPrompt.trim()}
+                                        className="w-full gradient-btn py-4 rounded-2xl text-lg font-bold"
+                                    >
+                                        {isGenerating ? (
+                                            <><div className="typing-indicator"><span></span><span></span><span></span></div> {t.generating}</>
+                                        ) : (
+                                            <>✨ {t.generate} ⚡ محلياً</>
+                                        )}
+                                    </button>
+                                </div>
+
+                                {enhancedPrompt && (
+                                    <div className="card-bg p-8 rounded-3xl glow-effect animate-fade-in">
+                                        <div className="flex justify-between items-center mb-4">
+                                            <h2 className="text-2xl font-bold text-primary">{t.enhancedResult}</h2>
+                                            <button
+                                                onClick={() => copyToClipboard(enhancedPrompt)}
+                                                className="gradient-btn px-6 py-2 rounded-xl"
+                                            >
+                                                <i className="fas fa-copy"></i> {t.copy}
+                                            </button>
+                                        </div>
+                                        <div className="input-bg p-6 rounded-2xl">
+                                            <pre className="text-primary whitespace-pre-wrap text-sm leading-relaxed">{enhancedPrompt}</pre>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {/* Library Tab */}
+                        {activeTab === 'library' && (
+                            <div className="animate-fade-in">
+                                <div className="card-bg p-6 rounded-3xl">
+                                    <h2 className="text-2xl font-bold text-primary mb-6">{t.library}</h2>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        {promptLibraryData.text.map(item => (
+                                            <div
+                                                key={item.id}
+                                                onClick={() => setSelectedPrompt({...item, fullPrompt: item.basePrompt})}
+                                                className="library-card card-bg p-5 rounded-2xl"
+                                            >
+                                                <h3 className="font-bold text-primary mb-2">{item.title}</h3>
+                                                <p className="text-secondary text-xs mb-3">{item.description}</p>
+                                                <div className="flex justify-between items-center">
+                                                    <span className="category-badge text-xs" style={{background: 'rgba(0, 212, 170, 0.2)', color: '#00d4aa'}}>
+                                                        {item.category}
+                                                    </span>
+                                                    <span className={`quality-indicator ${item.quality === 'pro' ? 'quality-pro' : 'quality-advanced'}`}>
+                                                        <i className="fas fa-star"></i>
+                                                        {item.quality === 'pro' ? t.proQuality : t.advancedQuality}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                        {/* Optimizer Tab */}
+                        {activeTab === 'optimizer' && (
+                            <div className="animate-fade-in">
+                                <div className="card-bg p-8 rounded-3xl glow-effect">
+                                    <h2 className="text-2xl font-bold text-primary mb-6">📊 محلل البرومبتات الذكي</h2>
+                                    
+                                    {!showOptimizer ? (
+                                        <div className="text-center py-12">
+                                            <div className="text-6xl mb-4">🔍</div>
+                                            <p className="text-xl text-secondary mb-6">قم بإدخال برومبت في تبويب "المولد" واضغط على "📊"</p>
+                                            <button
+                                                onClick={() => setActiveTab('generator')}
+                                                className="gradient-btn px-8 py-3 rounded-xl"
+                                            >
+                                                اذهب إلى المولد
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            <div className="text-center mb-8">
+                                                <div className="optimizer-score mb-4">{optimizerScore}%</div>
+                                                <div className="score-bar">
+                                                    <div className="score-fill" style={{width: `${optimizerScore}%`}}></div>
+                                                </div>
+                                                <p className="text-secondary mt-2">
+                                                    {optimizerScore >= 80 ? '🎉 ممتاز! برومبت قوي جداً' :
+                                                     optimizerScore >= 60 ? '👍 جيد! يمكن تحسينه أكثر' :
+                                                     optimizerScore >= 40 ? '⚠️ متوسط، يحتاج تحسينات' :
+                                                     '❌ ضعيف، اتبع الاقتراحات'}
+                                                </p>
+                                            </div>
+
+                                            {optimizerSuggestions.length > 0 && (
+                                                <div>
+                                                    <h3 className="text-xl font-bold text-primary mb-4">💡 اقتراحات التحسين</h3>
+                                                    {optimizerSuggestions.map((suggestion, index) => (
+                                                        <div
+                                                            key={index}
+                                                            className="suggestion-item input-bg"
+                                                            style={{
+                                                                borderLeftColor: 
+                                                                    suggestion.type === 'success' ? '#00d4aa' :
+                                                                    suggestion.type === 'warning' ? '#ffd93d' :
+                                                                    '#ff6b6b'
+                                                            }}
+                                                        >
+                                                            <p className="text-primary">
+                                                                {suggestion.type === 'success' ? '✅' :
+                                                                 suggestion.type === 'warning' ? '⚠️' :
+                                                                 '💡'} {suggestion.text}
+                                                            </p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Industries Tab */}
+                        {activeTab === 'industries' && (
+                            <div className="animate-fade-in">
+                                <div className="card-bg p-8 rounded-3xl">
+                                    <h2 className="text-2xl font-bold text-primary mb-6">🏭 {t.selectIndustry}</h2>
+                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                                        {Object.entries(industryTemplates).map(([key, industry]) => (
+                                            <div
+                                                key={key}
+                                                onClick={() => setSelectedIndustry(selectedIndustry === key ? null : key)}
+                                                className={`industry-card card-bg p-6 rounded-2xl text-center cursor-pointer ${
+                                                    selectedIndustry === key ? 'selected' : ''
+                                                }`}
+                                            >
+                                                <div className="text-5xl mb-3">{industry.icon}</div>
+                                                <h3 className="font-bold text-primary">{industry.name}</h3>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {selectedIndustry && (
+                                        <div className="animate-fade-in">
+                                            <h3 className="text-xl font-bold text-primary mb-4">
+                                                قوالب {industryTemplates[selectedIndustry].name}
+                                            </h3>
+                                            <div className="grid gap-3">
+                                                {industryTemplates[selectedIndustry].prompts.map((prompt, index) => (
+                                                    <div
+                                                        key={index}
+                                                        onClick={() => {
+                                                            setBasicPrompt(prompt);
+                                                            setActiveTab('generator');
+                                                        }}
+                                                        className="input-bg p-4 rounded-xl cursor-pointer hover:bg-opacity-80 transition-all"
+                                                    >
+                                                        <p className="text-primary">📝 {prompt}</p>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* FAQ Tab */}
+                        {activeTab === 'faq' && (
+                            <div className="animate-fade-in">
+                                <div className="card-bg p-8 rounded-3xl">
+                                    <h2 className="text-3xl font-bold text-primary mb-4">❓ أسئلة شائعة عن البرومبتات</h2>
+                                    <p className="text-secondary mb-8">دليل شامل للمبتدئين لفهم وكتابة برومبتات فعالة</p>
+                                    
+                                    <div className="mb-12">
+                                        {faqData.map((faq, index) => (
+                                            <div key={index} className="faq-item input-bg">
+                                                <div 
+                                                    className="faq-question"
+                                                    onClick={() => toggleFaq(index)}
+                                                >
+                                                    <div className="flex items-center gap-3">
+                                                        <span className="text-3xl">{faq.icon}</span>
+                                                        <span className="text-primary">{faq.question}</span>
+                                                    </div>
+                                                    <span className={`faq-icon ${openFaqIndex === index ? 'rotated' : ''}`}>
+                                                        ⌄
+                                                    </span>
+                                                </div>
+                                                <div className={`faq-answer ${openFaqIndex === index ? 'open' : ''}`}>
+                                                    <p className="text-secondary whitespace-pre-line leading-relaxed">
+                                                        {faq.answer}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-2xl font-bold text-primary mb-6">💡 أمثلة عملية</h3>
+                                        {examplePrompts.map((example, index) => (
+                                            <div key={index} className="example-block input-bg mb-4">
+                                                <button
+                                                    onClick={() => copyToClipboard(example.prompt)}
+                                                    className="copy-example-btn gradient-btn"
+                                                >
+                                                    <i className="fas fa-copy"></i> نسخ
+                                                </button>
+                                                <h4 className="font-bold text-primary mb-2 text-lg">{example.title}</h4>
+                                                <p className="text-secondary mb-2 text-sm">
+                                                    <span className="category-badge" style={{background: 'rgba(0, 212, 170, 0.2)', color: '#00d4aa'}}>
+                                                        {example.category}
+                                                    </span>
+                                                </p>
+                                                <p className="text-primary leading-relaxed">{example.prompt}</p>
+                                                <button
+                                                    onClick={() => {
+                                                        setBasicPrompt(example.prompt);
+                                                        setActiveTab('generator');
+                                                    }}
+                                                    className="mt-3 px-4 py-2 rounded-xl text-sm"
+                                                    style={{border: '2px solid #00d4aa', color: '#00d4aa'}}
+                                                >
+                                                    ✨ استخدم هذا المثال
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                        {/* Popular Prompts Tab */}
+                        {activeTab === 'popular' && (
+                            <div className="animate-fade-in">
+                                <div className="card-bg p-8 rounded-3xl">
+                                    <h2 className="text-3xl font-bold text-primary mb-4">🔥 البرومبتات الأكثر شعبية</h2>
+                                    <p className="text-secondary mb-8">البرومبتات الأعلى تقييماً واستخداماً من المجتمع</p>
+                                    
+                                    <div className="overflow-x-auto">
+                                        <table className="popular-table">
+                                            <tbody>
+                                                {popularPrompts.map((item, index) => (
+                                                    <tr 
+                                                        key={index} 
+                                                        className="popular-row"
+                                                        onClick={() => usePopularPrompt(item.prompt)}
+                                                    >
+                                                        <td className="input-bg" style={{width: '80px'}}>
+                                                            <div className={`rank-badge ${
+                                                                item.rank === 1 ? 'rank-1' :
+                                                                item.rank === 2 ? 'rank-2' :
+                                                                item.rank === 3 ? 'rank-3' :
+                                                                'rank-other'
+                                                            }`}>
+                                                                {item.rank === 1 ? '🥇' :
+                                                                 item.rank === 2 ? '🥈' :
+                                                                 item.rank === 3 ? '🥉' :
+                                                                 item.rank}
+                                                            </div>
+                                                        </td>
+                                                        <td className="input-bg" style={{width: '100%'}}>
+                                                            <div className="flex flex-col gap-2">
+                                                                <p className="text-primary font-bold">{item.prompt}</p>
+                                                                <div className="flex gap-3 items-center flex-wrap">
+                                                                    <span className="category-badge text-xs" style={{background: 'rgba(0, 212, 170, 0.2)', color: '#00d4aa'}}>
+                                                                        {item.category}
+                                                                    </span>
+                                                                    <span className="text-secondary text-xs">
+                                                                        👥 {item.uses.toLocaleString()} استخدام
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td className="input-bg" style={{width: '150px', textAlign: 'center'}}>
+                                                            <div className="star-rating">
+                                                                {[...Array(5)].map((_, i) => (
+                                                                    <span key={i} className={i < item.rating ? '' : 'star-empty'}>
+                                                                        ★
+                                                                    </span>
+                                                                ))}
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div className="text-center mt-8">
+                                        <p className="text-secondary text-sm">
+                                            💡 اضغط على أي برومبت لاستخدامه مباشرة في المولد
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Stats Tab */}
+                        {activeTab === 'stats' && (
+                            <div className="animate-fade-in">
+                                <div className="card-bg p-8 rounded-3xl">
+                                    <h2 className="text-2xl font-bold text-primary mb-6">📈 إحصائياتك</h2>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div className="stat-card input-bg">
+                                            <div className="text-4xl mb-2">📊</div>
+                                            <div className="stat-number gradient-text">{stats.totalGenerated}</div>
+                                            <p className="text-secondary text-sm">إجمالي البرومبتات</p>
+                                        </div>
+                                        <div className="stat-card input-bg">
+                                            <div className="text-4xl mb-2">🔥</div>
+                                            <div className="stat-number gradient-text">{stats.todayGenerated}</div>
+                                            <p className="text-secondary text-sm">اليوم</p>
+                                        </div>
+                                        <div className="stat-card input-bg">
+                                            <div className="text-4xl mb-2">⭐</div>
+                                            <div className="text-lg font-bold text-primary">{stats.favoriteCategory}</div>
+                                            <p className="text-secondary text-sm">الفئة الأكثر استخداماً</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Share Modal */}
+                    {showShareModal && (
+                        <div className="modal-overlay" onClick={() => setShowShareModal(false)}>
+                            <div className="modal-content card-bg p-8" onClick={(e) => e.stopPropagation()}>
+                                <h2 className="text-2xl font-bold text-primary mb-4">{t.shareTitle}</h2>
+                                <p className="text-secondary mb-6">{t.shareDescription}</p>
+                                
+                                <div className="grid gap-4">
+                                    <div
+                                        onClick={shareToTwitter}
+                                        className="share-option input-bg flex items-center gap-4"
+                                    >
+                                        <div className="text-3xl">🐦</div>
+                                        <div>
+                                            <h3 className="font-bold text-primary">شارك على تويتر</h3>
+                                            <p className="text-xs text-secondary">انشر مع متابعينك</p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        onClick={shareToTelegram}
+                                        className="share-option input-bg flex items-center gap-4"
+                                    >
+                                        <div className="text-3xl">✈️</div>
+                                        <div>
+                                            <h3 className="font-bold text-primary">شارك على تليجرام</h3>
+                                            <p className="text-xs text-secondary">أرسل للأصدقاء</p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        onClick={copyShareLink}
+                                        className="share-option input-bg flex items-center gap-4"
+                                    >
+                                        <div className="text-3xl">🔗</div>
+                                        <div>
+                                            <h3 className="font-bold text-primary">نسخ الرابط</h3>
+                                            <p className="text-xs text-secondary">شارك في أي مكان</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Library Prompt Modal */}
+                    {selectedPrompt && (
+                        <div className="modal-overlay" onClick={() => setSelectedPrompt(null)}>
+                            <div className="modal-content card-bg p-6" onClick={(e) => e.stopPropagation()}>
+                                <h2 className="text-xl font-bold text-primary mb-4">{selectedPrompt.title}</h2>
+                                <div className="input-bg p-4 rounded-xl mb-4" style={{maxHeight: '300px', overflowY: 'auto'}}>
+                                    <pre className="text-primary whitespace-pre-wrap text-xs">{selectedPrompt.fullPrompt}</pre>
+                                </div>
+                                <div className="flex gap-2">
+                                    <button
+                                        onClick={() => copyToClipboard(selectedPrompt.fullPrompt)}
+                                        className="flex-1 gradient-btn py-2 rounded-lg"
+                                    >
+                                        <i className="fas fa-copy"></i>
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            setBasicPrompt(selectedPrompt.fullPrompt);
+                                            setSelectedPrompt(null);
+                                            setActiveTab('generator');
+                                        }}
+                                        className="flex-1 py-2 rounded-lg"
+                                        style={{border: '2px solid #00d4aa', color: '#00d4aa'}}
+                                    >
+                                        {t.useThisPrompt}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Footer */}
+                    <footer className="header-bg py-6 mt-12">
+                        <div className="container mx-auto px-4 text-center">
+                            <div className="flex justify-center gap-4 mb-4">
+                                <a
+                                    href="https://t.me/dr_basl"
+                                    target="_blank"
+                                    className="px-4 py-2 rounded-full text-sm"
+                                    style={{background: '#0088cc', color: 'white'}}
+                                >
+                                    <i className="fab fa-telegram"></i> تليجرام
+                                </a>
+                                <a
+                                    href="https://x.com/hzbr_al"
+                                    target="_blank"
+                                    className="px-4 py-2 rounded-full text-sm"
+                                    style={{background: '#000', color: 'white'}}
+                                >
+                                    <i className="fab fa-x-twitter"></i> تويتر
+                                </a>
+                            </div>
+                            <p className="text-xs text-secondary">رقيم AI 966 © 2025 | الذكاء الاصطناعي السعودي</p>
+                            <p className="text-xs text-secondary mt-2" style={{color: '#00d4aa'}}>⚡ يعمل محلياً بدون إنترنت - قوالب احترافية ذكية</p>
+                        </div>
+                    </footer>
+                </div>
+            );
+        }
+
+        // Theme Toggle
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                icon.textContent = '☀️';
+            } else {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                icon.textContent = '🌙';
+            }
+        });
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
